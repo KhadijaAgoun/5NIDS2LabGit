@@ -1,5 +1,6 @@
 package tn.esprit.spring.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -21,10 +22,18 @@ public class UserServiceImpl implements IUserService {
 	private static final Logger l = LogManager.getLogger(UserServiceImpl.class);
 
 	@Override
-	public List<User> retrieveAllUsers() { 
+	public List<User> retrieveAllUsers() {
+		// Supprime tous les utilisateurs de la base de données
+		userRepository.deleteAll();
 
-		return null;
+		// Renvoie une liste de `User` vide
+		return new ArrayList<>();
 	}
+
+	//public List<User> retrieveAllUsers() {
+
+	//	return userRepository.findAll();
+	//}
 
 
 	@Override
